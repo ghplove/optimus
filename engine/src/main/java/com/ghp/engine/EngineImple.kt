@@ -1,10 +1,8 @@
 package com.ghp.engine
 
-import com.ghp.base.api.BaseApi
+import com.ghp.base.api.base.BaseApi
 import com.ghp.base.api.DemoType
-import com.ghp.impledemoa.DemoImplA
-import com.ghp.impledemob.DemoImplB
-import com.ghp.impledemoc.DemoImplC
+import com.ghp.plugin.EngineManger
 
 class EngineImple{
     private var baseApi: BaseApi? = null
@@ -19,13 +17,13 @@ class EngineImple{
     fun init(){
         baseApi = when (type) {
             DemoType.DEMO_A -> {
-                DemoImplA()
+                EngineManger.getAEngineInstance()
             }
             DemoType.DEMO_B -> {
-                DemoImplB()
+                EngineManger.getBEngineInstance()
             }
             DemoType.DEMO_C -> {
-                DemoImplC()
+                EngineManger.getCEngineInstance()
             }
         }
         baseApi?.init()

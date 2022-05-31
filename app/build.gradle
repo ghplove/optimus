@@ -45,4 +45,13 @@ dependencies {
 
     implementation project(':base-api')
     implementation project(':engine')
+    if(CONTAIN.contains('a')){
+        implementation project(':imple-demo-a')
+    }
+    if(CONTAIN.contains('b')){
+        implementation project(':imple-demo-b')
+    }
+    if(CONTAIN.contains('c')){
+        implementation project(':imple-demo-c')
+    }
 }

@@ -1,4 +1,4 @@
-package com.ghp.base.api
+package com.ghp.base.api.base
 
 interface BaseApi {
     fun init()

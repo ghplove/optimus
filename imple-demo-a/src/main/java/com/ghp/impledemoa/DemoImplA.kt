@@ -1,9 +1,9 @@
 package com.ghp.impledemoa
 
 import android.util.Log
-import com.ghp.base.api.BaseApi
+import com.ghp.base.api.api.ABaseApi
 
-class DemoImplA : BaseApi {
+class DemoImplA : ABaseApi {
     private val TAG = "DemoImpl"
     override fun init() {
         Log.d(TAG, "init DemoImplA")
