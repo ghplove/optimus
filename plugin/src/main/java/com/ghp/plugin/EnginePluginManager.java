@@ -25,7 +25,7 @@ public class EnginePluginManager {
             try {
                 HolderPlugin basePlugin = (HolderPlugin) Class.forName(provider).newInstance();
                 basePlugin.configure();
-                Log.d("ErtcEnginePluginManager", provider + " loadRouter!");
+                Log.d("EnginePluginManager", provider + " loadRouter!");
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             } catch (InstantiationException e) {
