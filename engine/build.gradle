@@ -39,5 +39,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.0'
 
     implementation project(':base-api')
-    implementation project(':plugin')
+    implementation project(':apt-optimus')
 }

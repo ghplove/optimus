@@ -1,7 +1,7 @@
--keep @com.ghp.annotation.OptimusAnnotation class * {*;}
+-keep @com.ghp.annotation.OptimusService class * {*;}
 -keep class * {
-    @com.ghp.annotation.OptimusAnnotation <fields>;
+    @com.ghp.annotation.OptimusService <fields>;
 }
 -keepclassmembers class * {
-@com.ghp.annotation.OptimusAnnotation <methods>;
+@com.ghp.annotation.OptimusService <methods>;
 }

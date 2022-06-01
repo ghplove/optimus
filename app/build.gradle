@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -54,4 +55,7 @@ dependencies {
     if(CONTAIN.contains('c')){
         implementation project(':imple-demo-c')
     }
+
+    implementation project(path: ':apt-annotation')
+    annotationProcessor project(path: ':apt-processor')
 }

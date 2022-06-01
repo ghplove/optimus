@@ -1,6 +1,6 @@
 package com.ghp.processor;
 
-import com.ghp.annotation.OptimusAnnotation;
+import com.ghp.annotation.OptimusService;
 import com.google.auto.service.AutoService;
 
 import java.io.IOException;
@@ -33,7 +33,7 @@ import javax.tools.StandardLocation;
 
 @AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
-@SupportedAnnotationTypes({"com.ghp.annotation.OptimusAnnotation"})
+@SupportedAnnotationTypes({"com.ghp.annotation.OptimusService"})
 public class OptimusProcessor extends AbstractProcessor {
 
     public static final String META_INF_OPTIMUS = "META-INF/optimus/";
@@ -46,7 +46,7 @@ public class OptimusProcessor extends AbstractProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotataions = new LinkedHashSet<>();
-        annotataions.add(OptimusAnnotation.class.getCanonicalName());
+        annotataions.add(OptimusService.class.getCanonicalName());
         return annotataions;
     }
 
@@ -57,14 +57,14 @@ public class OptimusProcessor extends AbstractProcessor {
 
     /**
      * <ol>
-     *  <li> For each class annotated with {@link OptimusAnnotation}<ul>
-     *      <li> Verify the {@link OptimusAnnotation} interface value is correct
+     *  <li> For each class annotated with {@link OptimusService}<ul>
+     *      <li> Verify the {@link OptimusService} interface value is correct
      *      <li> Categorize the class by its service interface
      *      </ul>
      *
-     *  <li> For each {@link OptimusAnnotation} interface <ul>
+     *  <li> For each {@link OptimusService} interface <ul>
      *       <li> Create a file named {@code META-INF/services/<interface>}
-     *       <li> For each {@link OptimusAnnotation} annotated class for this interface <ul>
+     *       <li> For each {@link OptimusService} annotated class for this interface <ul>
      *           <li> Create an entry in the file
      *           </ul>
      *       </ul>
@@ -97,14 +97,14 @@ public class OptimusProcessor extends AbstractProcessor {
     private void processAnnotations(Set<? extends TypeElement> annotations,
                                     RoundEnvironment roundEnv) {
 
-        Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(OptimusAnnotation.class);
+        Set<? extends Element> elements = roundEnv.getElementsAnnotatedWith(OptimusService.class);
         log(annotations.toString());
         log(elements.toString());
 
         for (Element element : elements) {
             TypeElement providerImplementer = (TypeElement) element;
             // 获取注解
-            AnnotationMirror annotationMirror = Utils.getAnnotationMirror(element, OptimusAnnotation.class);
+            AnnotationMirror annotationMirror = Utils.getAnnotationMirror(element, OptimusService.class);
             // 获取注解中的value字段
             DeclaredType providerInterface = Utils.getValueField(annotationMirror);
             if (providerInterface == null) {

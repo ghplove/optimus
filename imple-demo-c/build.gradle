@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -40,4 +41,7 @@ dependencies {
 
     implementation project(':base-api')
     implementation project(':plugin')
+
+    api project(path: ':apt-optimus')
+    kapt project(path: ':apt-processor')
 }
